@@ -79,6 +79,13 @@ createTidyData <- function(path="") {
  meanStdDF
 }
 
+## This function does analysis on the tidy data set created by createTidyData function.
+## 1. Sorts the data by Subject and Activity so the dataset can be grouped by Subject and its activities.
+## 2. Creates an new output data frame meanDF, which will contain the results
+## 3. Two loops: Outerloop for the subject, and inner loop for the activity
+## 4. compute the mean of the standard deviation and means for the activity.
+## 5. Add the mean to the o/p data frame meanDF
+##
 summarize <- function(df) {
   if (gdebug) {
     message("in function summarize()")
@@ -114,11 +121,13 @@ summarize <- function(df) {
   
 
   if(gdebug) { ## display the debug content
-   
   }
   meanDF
 }
 
+##
+## this is more of a utility function that calls createTidyData and then summarize. Trying to mimic java static main
+##
 main <- function(debug=F,path="",nsubj=as.vector(1:30)) {
   gdebug <<- debug
   subj <<- nsubj
